@@ -1,9 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -24,51 +26,54 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "carrera")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Carrera.findAll", query = "SELECT c FROM Carrera c"),
-    @NamedQuery(name = "Carrera.findByIdCarrera", query = "SELECT c FROM Carrera c WHERE c.idCarrera = :idCarrera"),
-    @NamedQuery(name = "Carrera.findByNombreCarrera", query = "SELECT c FROM Carrera c WHERE c.nombreCarrera = :nombreCarrera"),
-    @NamedQuery(name = "Carrera.findByDescripcion", query = "SELECT c FROM Carrera c WHERE c.descripcion = :descripcion")})
+    @NamedQuery(name = "Carrera.findAll", query = "SELECT c FROM Carrera c")
+    , @NamedQuery(name = "Carrera.findById", query = "SELECT c FROM Carrera c WHERE c.id = :id")
+    , @NamedQuery(name = "Carrera.findByNombreCarrera", query = "SELECT c FROM Carrera c WHERE c.nombreCarrera = :nombreCarrera")
+    , @NamedQuery(name = "Carrera.findByDescripcion", query = "SELECT c FROM Carrera c WHERE c.descripcion = :descripcion")})
 public class Carrera implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_carrera")
-    private Integer idCarrera;
+    @Column(name = "id")
+    private Integer id;
     @Size(max = 45)
     @Column(name = "nombre_carrera")
     private String nombreCarrera;
     @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
+    @JsonIgnore
     @OneToMany(mappedBy = "idCarrera")
     private List<Ciclo> cicloList;
+    @JsonIgnore
     @OneToMany(mappedBy = "idCarrera")
     private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "id_periodo_academico", referencedColumnName = "id_periodo_academico")
+    @JsonIgnore
     @ManyToOne
     private PeriodoAcademico idPeriodoAcademico;
 
     public Carrera() {
     }
 
-    public Carrera(Integer idCarrera) {
-        this.idCarrera = idCarrera;
+    public Carrera(Integer id) {
+        this.id = id;
     }
 
-    public Integer getIdCarrera() {
-        return idCarrera;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCarrera(Integer idCarrera) {
-        this.idCarrera = idCarrera;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombreCarrera() {
@@ -116,7 +121,7 @@ public class Carrera implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCarrera != null ? idCarrera.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -127,7 +132,7 @@ public class Carrera implements Serializable {
             return false;
         }
         Carrera other = (Carrera) object;
-        if ((this.idCarrera == null && other.idCarrera != null) || (this.idCarrera != null && !this.idCarrera.equals(other.idCarrera))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -135,7 +140,7 @@ public class Carrera implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.demo.model.Carrera[ idCarrera=" + idCarrera + " ]";
+        return "com.example.demo.model.Carrera[ id=" + id + " ]";
     }
     
 }

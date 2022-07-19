@@ -59,8 +59,8 @@ public class CarreraController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             try {
-//                car.setNombreCarrera(c.getNombreCarrera());
-//                car.setDescripcion(c.getDescripcion());
+                car.setNombreCarrera(c.getNombreCarrera());
+                car.setDescripcion(c.getDescripcion());
                 return new ResponseEntity<>(carreraService.create(c), HttpStatus.OK);
             } catch (Exception e) {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
