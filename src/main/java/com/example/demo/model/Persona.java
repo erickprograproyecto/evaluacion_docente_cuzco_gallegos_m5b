@@ -20,12 +20,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "persona")
@@ -53,23 +54,30 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_persona")
     private Integer idPersona;
+    @Size(max = 45)
     @Column(name = "nombre")
     private String nombre;
+    @Size(max = 45)
     @Column(name = "apellido")
     private String apellido;
     @Column(name = "fecha_nacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
+    @Size(max = 45)
     @Column(name = "cedula")
     private String cedula;
+    @Size(max = 45)
     @Column(name = "celular")
     private String celular;
+    @Size(max = 45)
     @Column(name = "correo")
     private String correo;
     @Column(name = "genero")
     private Integer genero;
+    @Size(max = 120)
     @Column(name = "direccion")
     private String direccion;
+    @Size(max = 50)
     @Column(name = "foto")
     private String foto;
     @Column(name = "intruccion")

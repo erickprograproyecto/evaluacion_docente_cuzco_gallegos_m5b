@@ -8,10 +8,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Embeddable
 public class AsignacionCoevaluacionPK implements Serializable {
@@ -20,9 +21,11 @@ public class AsignacionCoevaluacionPK implements Serializable {
     @Column(name = "id_asignacion")
     private int idAsignacion;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_docente_evaluador")
     private int idDocenteEvaluador;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_docente_evaluado")
     private int idDocenteEvaluado;
 

@@ -18,12 +18,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "ciclo")
@@ -41,8 +42,10 @@ public class Ciclo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_ciclo")
     private Integer idCiclo;
+    @Size(max = 45)
     @Column(name = "ciclo")
     private String ciclo;
+    @Size(max = 45)
     @Column(name = "observaciones")
     private String observaciones;
     @JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")

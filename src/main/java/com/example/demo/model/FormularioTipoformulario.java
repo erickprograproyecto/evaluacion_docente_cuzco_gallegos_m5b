@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "formulario_tipoformulario")

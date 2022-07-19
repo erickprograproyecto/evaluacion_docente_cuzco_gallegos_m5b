@@ -8,18 +8,21 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Embeddable
 public class PersonaMateriaPK implements Serializable {
 
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_persona")
     private int idPersona;
     @Basic(optional = false)
+    @NotNull
     @Column(name = "id_materia")
     private int idMateria;
 

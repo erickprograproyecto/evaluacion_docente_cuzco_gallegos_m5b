@@ -16,12 +16,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "formulario")
@@ -39,8 +40,10 @@ public class Formulario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_formulario")
     private Integer idFormulario;
+    @Size(max = 150)
     @Column(name = "preguntas")
     private String preguntas;
+    @Size(max = 45)
     @Column(name = "observacion")
     private String observacion;
     @OneToMany(mappedBy = "idFormulario")

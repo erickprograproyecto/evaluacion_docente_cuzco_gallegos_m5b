@@ -19,12 +19,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "materia")
@@ -41,6 +42,7 @@ public class Materia implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_materia")
     private Integer idMateria;
+    @Size(max = 45)
     @Column(name = "nombre_Materia")
     private String nombreMateria;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")

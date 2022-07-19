@@ -19,12 +19,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "periodo_academico")
@@ -43,6 +44,7 @@ public class PeriodoAcademico implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_periodo_academico")
     private Integer idPeriodoAcademico;
+    @Size(max = 45)
     @Column(name = "periodo")
     private String periodo;
     @Column(name = "fecha_inicio")

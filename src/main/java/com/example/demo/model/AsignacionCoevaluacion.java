@@ -16,11 +16,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "asignacion_coevaluacion")
@@ -37,6 +38,7 @@ public class AsignacionCoevaluacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AsignacionCoevaluacionPK asignacionCoevaluacionPK;
+    @Size(max = 60)
     @Column(name = "observacion")
     private String observacion;
     @Column(name = "fecha_registro")

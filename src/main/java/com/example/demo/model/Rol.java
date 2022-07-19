@@ -19,12 +19,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "rol")
@@ -43,8 +44,10 @@ public class Rol implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_rol")
     private Integer idRol;
+    @Size(max = 255)
     @Column(name = "rol")
     private String rol;
+    @Size(max = 255)
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "fecha_hora_registro")

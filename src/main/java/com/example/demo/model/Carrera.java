@@ -18,12 +18,13 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author ISTA
+ * @author HP
  */
 @Entity
 @Table(name = "carrera")
@@ -41,8 +42,10 @@ public class Carrera implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_carrera")
     private Integer idCarrera;
+    @Size(max = 45)
     @Column(name = "nombre_carrera")
     private String nombreCarrera;
+    @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
     @OneToMany(mappedBy = "idCarrera")
