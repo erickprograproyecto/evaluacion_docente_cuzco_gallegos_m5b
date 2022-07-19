@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -24,17 +25,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "evaluacion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Evaluacion.findAll", query = "SELECT e FROM Evaluacion e"),
-    @NamedQuery(name = "Evaluacion.findByIdEvaluacion", query = "SELECT e FROM Evaluacion e WHERE e.idEvaluacion = :idEvaluacion"),
-    @NamedQuery(name = "Evaluacion.findByCalificacion", query = "SELECT e FROM Evaluacion e WHERE e.calificacion = :calificacion"),
-    @NamedQuery(name = "Evaluacion.findByFecha", query = "SELECT e FROM Evaluacion e WHERE e.fecha = :fecha"),
-    @NamedQuery(name = "Evaluacion.findByObservacion", query = "SELECT e FROM Evaluacion e WHERE e.observacion = :observacion")})
+    @NamedQuery(name = "Evaluacion.findAll", query = "SELECT e FROM Evaluacion e")
+    , @NamedQuery(name = "Evaluacion.findByIdEvaluacion", query = "SELECT e FROM Evaluacion e WHERE e.idEvaluacion = :idEvaluacion")
+    , @NamedQuery(name = "Evaluacion.findByCalificacion", query = "SELECT e FROM Evaluacion e WHERE e.calificacion = :calificacion")
+    , @NamedQuery(name = "Evaluacion.findByFecha", query = "SELECT e FROM Evaluacion e WHERE e.fecha = :fecha")
+    , @NamedQuery(name = "Evaluacion.findByObservacion", query = "SELECT e FROM Evaluacion e WHERE e.observacion = :observacion")})
 public class Evaluacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,7 +52,7 @@ public class Evaluacion implements Serializable {
     @Size(max = 255)
     @Column(name = "observacion")
     private String observacion;
-    @JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")
+    @JoinColumn(name = "id_carrera", referencedColumnName = "id")
     @ManyToOne
     private Carrera idCarrera;
     @JoinColumn(name = "id_ciclo", referencedColumnName = "id_ciclo")
@@ -66,12 +67,12 @@ public class Evaluacion implements Serializable {
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne
     private Persona idPersona;
-    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_persona")
-    @ManyToOne
-    private Persona idEstudiante;
     @JoinColumn(name = "id_tipo_formulario", referencedColumnName = "idtipo_formulario")
     @ManyToOne
     private TipoFormulario idTipoFormulario;
+    @JoinColumn(name = "id_estudiante", referencedColumnName = "id_persona")
+    @ManyToOne
+    private Persona idEstudiante;
 
     public Evaluacion() {
     }
@@ -152,20 +153,20 @@ public class Evaluacion implements Serializable {
         this.idPersona = idPersona;
     }
 
-    public Persona getIdEstudiante() {
-        return idEstudiante;
-    }
-
-    public void setIdEstudiante(Persona idEstudiante) {
-        this.idEstudiante = idEstudiante;
-    }
-
     public TipoFormulario getIdTipoFormulario() {
         return idTipoFormulario;
     }
 
     public void setIdTipoFormulario(TipoFormulario idTipoFormulario) {
         this.idTipoFormulario = idTipoFormulario;
+    }
+
+    public Persona getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Persona idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
 
     @Override

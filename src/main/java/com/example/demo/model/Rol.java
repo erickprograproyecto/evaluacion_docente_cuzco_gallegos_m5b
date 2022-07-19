@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -25,17 +26,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "rol")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r"),
-    @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol"),
-    @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol"),
-    @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion"),
-    @NamedQuery(name = "Rol.findByFechaHoraRegistro", query = "SELECT r FROM Rol r WHERE r.fechaHoraRegistro = :fechaHoraRegistro")})
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
+    , @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol")
+    , @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol")
+    , @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion")
+    , @NamedQuery(name = "Rol.findByFechaHoraRegistro", query = "SELECT r FROM Rol r WHERE r.fechaHoraRegistro = :fechaHoraRegistro")})
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;

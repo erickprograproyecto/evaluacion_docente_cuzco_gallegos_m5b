@@ -1,9 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -25,18 +27,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "periodo_academico")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PeriodoAcademico.findAll", query = "SELECT p FROM PeriodoAcademico p"),
-    @NamedQuery(name = "PeriodoAcademico.findByIdPeriodoAcademico", query = "SELECT p FROM PeriodoAcademico p WHERE p.idPeriodoAcademico = :idPeriodoAcademico"),
-    @NamedQuery(name = "PeriodoAcademico.findByPeriodo", query = "SELECT p FROM PeriodoAcademico p WHERE p.periodo = :periodo"),
-    @NamedQuery(name = "PeriodoAcademico.findByFechaInicio", query = "SELECT p FROM PeriodoAcademico p WHERE p.fechaInicio = :fechaInicio"),
-    @NamedQuery(name = "PeriodoAcademico.findByFechaFin", query = "SELECT p FROM PeriodoAcademico p WHERE p.fechaFin = :fechaFin")})
+    @NamedQuery(name = "PeriodoAcademico.findAll", query = "SELECT p FROM PeriodoAcademico p")
+    , @NamedQuery(name = "PeriodoAcademico.findByIdPeriodoAcademico", query = "SELECT p FROM PeriodoAcademico p WHERE p.idPeriodoAcademico = :idPeriodoAcademico")
+    , @NamedQuery(name = "PeriodoAcademico.findByPeriodo", query = "SELECT p FROM PeriodoAcademico p WHERE p.periodo = :periodo")
+    , @NamedQuery(name = "PeriodoAcademico.findByFechaInicio", query = "SELECT p FROM PeriodoAcademico p WHERE p.fechaInicio = :fechaInicio")
+    , @NamedQuery(name = "PeriodoAcademico.findByFechaFin", query = "SELECT p FROM PeriodoAcademico p WHERE p.fechaFin = :fechaFin")})
 public class PeriodoAcademico implements Serializable {
+
+    @Size(max = 45)
+    @Column(name = "periodo")
+    private String periodo;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,15 +50,13 @@ public class PeriodoAcademico implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_periodo_academico")
     private Integer idPeriodoAcademico;
-    @Size(max = 45)
-    @Column(name = "periodo")
-    private String periodo;
     @Column(name = "fecha_inicio")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
+    @JsonIgnore
     @OneToMany(mappedBy = "idPeriodoAcademico")
     private List<Carrera> carreraList;
 
@@ -71,13 +75,6 @@ public class PeriodoAcademico implements Serializable {
         this.idPeriodoAcademico = idPeriodoAcademico;
     }
 
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
-    }
 
     public Date getFechaInicio() {
         return fechaInicio;
@@ -127,6 +124,14 @@ public class PeriodoAcademico implements Serializable {
     @Override
     public String toString() {
         return "com.example.demo.model.PeriodoAcademico[ idPeriodoAcademico=" + idPeriodoAcademico + " ]";
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
     }
     
 }

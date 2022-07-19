@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -25,15 +26,15 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "materia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m"),
-    @NamedQuery(name = "Materia.findByIdMateria", query = "SELECT m FROM Materia m WHERE m.idMateria = :idMateria"),
-    @NamedQuery(name = "Materia.findByNombreMateria", query = "SELECT m FROM Materia m WHERE m.nombreMateria = :nombreMateria")})
+    @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m")
+    , @NamedQuery(name = "Materia.findByIdMateria", query = "SELECT m FROM Materia m WHERE m.idMateria = :idMateria")
+    , @NamedQuery(name = "Materia.findByNombreMateria", query = "SELECT m FROM Materia m WHERE m.nombreMateria = :nombreMateria")})
 public class Materia implements Serializable {
 
     private static final long serialVersionUID = 1L;

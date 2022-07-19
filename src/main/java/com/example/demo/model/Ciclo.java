@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -24,16 +25,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "ciclo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c"),
-    @NamedQuery(name = "Ciclo.findByIdCiclo", query = "SELECT c FROM Ciclo c WHERE c.idCiclo = :idCiclo"),
-    @NamedQuery(name = "Ciclo.findByCiclo", query = "SELECT c FROM Ciclo c WHERE c.ciclo = :ciclo"),
-    @NamedQuery(name = "Ciclo.findByObservaciones", query = "SELECT c FROM Ciclo c WHERE c.observaciones = :observaciones")})
+    @NamedQuery(name = "Ciclo.findAll", query = "SELECT c FROM Ciclo c")
+    , @NamedQuery(name = "Ciclo.findByIdCiclo", query = "SELECT c FROM Ciclo c WHERE c.idCiclo = :idCiclo")
+    , @NamedQuery(name = "Ciclo.findByCiclo", query = "SELECT c FROM Ciclo c WHERE c.ciclo = :ciclo")
+    , @NamedQuery(name = "Ciclo.findByObservaciones", query = "SELECT c FROM Ciclo c WHERE c.observaciones = :observaciones")})
 public class Ciclo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,7 +49,7 @@ public class Ciclo implements Serializable {
     @Size(max = 45)
     @Column(name = "observaciones")
     private String observaciones;
-    @JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")
+    @JoinColumn(name = "id_carrera", referencedColumnName = "id")
     @ManyToOne
     private Carrera idCarrera;
     @OneToMany(mappedBy = "idCiclo")

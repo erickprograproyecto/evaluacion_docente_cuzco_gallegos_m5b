@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -21,18 +22,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "asignacion_coevaluacion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AsignacionCoevaluacion.findAll", query = "SELECT a FROM AsignacionCoevaluacion a"),
-    @NamedQuery(name = "AsignacionCoevaluacion.findByIdAsignacion", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idAsignacion = :idAsignacion"),
-    @NamedQuery(name = "AsignacionCoevaluacion.findByIdDocenteEvaluador", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idDocenteEvaluador = :idDocenteEvaluador"),
-    @NamedQuery(name = "AsignacionCoevaluacion.findByIdDocenteEvaluado", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idDocenteEvaluado = :idDocenteEvaluado"),
-    @NamedQuery(name = "AsignacionCoevaluacion.findByObservacion", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.observacion = :observacion"),
-    @NamedQuery(name = "AsignacionCoevaluacion.findByFechaRegistro", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.fechaRegistro = :fechaRegistro")})
+    @NamedQuery(name = "AsignacionCoevaluacion.findAll", query = "SELECT a FROM AsignacionCoevaluacion a")
+    , @NamedQuery(name = "AsignacionCoevaluacion.findByIdAsignacion", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idAsignacion = :idAsignacion")
+    , @NamedQuery(name = "AsignacionCoevaluacion.findByIdDocenteEvaluador", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idDocenteEvaluador = :idDocenteEvaluador")
+    , @NamedQuery(name = "AsignacionCoevaluacion.findByIdDocenteEvaluado", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.asignacionCoevaluacionPK.idDocenteEvaluado = :idDocenteEvaluado")
+    , @NamedQuery(name = "AsignacionCoevaluacion.findByObservacion", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.observacion = :observacion")
+    , @NamedQuery(name = "AsignacionCoevaluacion.findByFechaRegistro", query = "SELECT a FROM AsignacionCoevaluacion a WHERE a.fechaRegistro = :fechaRegistro")})
 public class AsignacionCoevaluacion implements Serializable {
 
     private static final long serialVersionUID = 1L;

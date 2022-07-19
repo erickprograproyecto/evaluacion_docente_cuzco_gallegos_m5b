@@ -1,9 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -22,16 +24,16 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "formulario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Formulario.findAll", query = "SELECT f FROM Formulario f"),
-    @NamedQuery(name = "Formulario.findByIdFormulario", query = "SELECT f FROM Formulario f WHERE f.idFormulario = :idFormulario"),
-    @NamedQuery(name = "Formulario.findByPreguntas", query = "SELECT f FROM Formulario f WHERE f.preguntas = :preguntas"),
-    @NamedQuery(name = "Formulario.findByObservacion", query = "SELECT f FROM Formulario f WHERE f.observacion = :observacion")})
+    @NamedQuery(name = "Formulario.findAll", query = "SELECT f FROM Formulario f")
+    , @NamedQuery(name = "Formulario.findByIdFormulario", query = "SELECT f FROM Formulario f WHERE f.idFormulario = :idFormulario")
+    , @NamedQuery(name = "Formulario.findByPreguntas", query = "SELECT f FROM Formulario f WHERE f.preguntas = :preguntas")
+    , @NamedQuery(name = "Formulario.findByObservacion", query = "SELECT f FROM Formulario f WHERE f.observacion = :observacion")})
 public class Formulario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,8 +48,10 @@ public class Formulario implements Serializable {
     @Size(max = 45)
     @Column(name = "observacion")
     private String observacion;
+    @JsonIgnore
     @OneToMany(mappedBy = "idFormulario")
     private List<Evaluacion> evaluacionList;
+    @JsonIgnore
     @OneToMany(mappedBy = "idFormulario")
     private List<FormularioTipoformulario> formularioTipoformularioList;
 

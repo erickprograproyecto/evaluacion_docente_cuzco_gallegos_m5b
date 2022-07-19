@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -17,16 +18,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "persona_materia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PersonaMateria.findAll", query = "SELECT p FROM PersonaMateria p"),
-    @NamedQuery(name = "PersonaMateria.findByIdPersona", query = "SELECT p FROM PersonaMateria p WHERE p.personaMateriaPK.idPersona = :idPersona"),
-    @NamedQuery(name = "PersonaMateria.findByIdMateria", query = "SELECT p FROM PersonaMateria p WHERE p.personaMateriaPK.idMateria = :idMateria"),
-    @NamedQuery(name = "PersonaMateria.findByEstado", query = "SELECT p FROM PersonaMateria p WHERE p.estado = :estado")})
+    @NamedQuery(name = "PersonaMateria.findAll", query = "SELECT p FROM PersonaMateria p")
+    , @NamedQuery(name = "PersonaMateria.findByIdPersona", query = "SELECT p FROM PersonaMateria p WHERE p.personaMateriaPK.idPersona = :idPersona")
+    , @NamedQuery(name = "PersonaMateria.findByIdMateria", query = "SELECT p FROM PersonaMateria p WHERE p.personaMateriaPK.idMateria = :idMateria")
+    , @NamedQuery(name = "PersonaMateria.findByEstado", query = "SELECT p FROM PersonaMateria p WHERE p.estado = :estado")})
 public class PersonaMateria implements Serializable {
 
     private static final long serialVersionUID = 1L;

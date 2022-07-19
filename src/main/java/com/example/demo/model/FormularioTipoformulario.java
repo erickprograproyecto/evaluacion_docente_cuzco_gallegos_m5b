@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package com.example.demo.model;
 
@@ -20,14 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author HP
+ * @author ISTA
  */
 @Entity
 @Table(name = "formulario_tipoformulario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FormularioTipoformulario.findAll", query = "SELECT f FROM FormularioTipoformulario f"),
-    @NamedQuery(name = "FormularioTipoformulario.findByIdFormulariotipoformulario", query = "SELECT f FROM FormularioTipoformulario f WHERE f.idFormulariotipoformulario = :idFormulariotipoformulario")})
+    @NamedQuery(name = "FormularioTipoformulario.findAll", query = "SELECT f FROM FormularioTipoformulario f")
+    , @NamedQuery(name = "FormularioTipoformulario.findByIdFormulariotipoformulario", query = "SELECT f FROM FormularioTipoformulario f WHERE f.idFormulariotipoformulario = :idFormulariotipoformulario")})
 public class FormularioTipoformulario implements Serializable {
 
     private static final long serialVersionUID = 1L;

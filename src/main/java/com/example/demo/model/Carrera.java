@@ -7,7 +7,6 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,11 +17,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -33,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Carrera.findAll", query = "SELECT c FROM Carrera c")
-    , @NamedQuery(name = "Carrera.findById", query = "SELECT c FROM Carrera c WHERE c.id = :id")
+    , @NamedQuery(name = "Carrera.findByIdCarrera", query = "SELECT c FROM Carrera c WHERE c.idCarrera = :idCarrera")
     , @NamedQuery(name = "Carrera.findByNombreCarrera", query = "SELECT c FROM Carrera c WHERE c.nombreCarrera = :nombreCarrera")
     , @NamedQuery(name = "Carrera.findByDescripcion", query = "SELECT c FROM Carrera c WHERE c.descripcion = :descripcion")})
 public class Carrera implements Serializable {
@@ -42,20 +39,14 @@ public class Carrera implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "id_carrera")
+    private Integer idCarrera;
     @Size(max = 45)
     @Column(name = "nombre_carrera")
     private String nombreCarrera;
     @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
-    @JsonIgnore
-    @OneToMany(mappedBy = "idCarrera")
-    private List<Ciclo> cicloList;
-    @JsonIgnore
-    @OneToMany(mappedBy = "idCarrera")
-    private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "id_periodo_academico", referencedColumnName = "id_periodo_academico")
     @JsonIgnore
     @ManyToOne
@@ -64,16 +55,16 @@ public class Carrera implements Serializable {
     public Carrera() {
     }
 
-    public Carrera(Integer id) {
-        this.id = id;
+    public Carrera(Integer idCarrera) {
+        this.idCarrera = idCarrera;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdCarrera() {
+        return idCarrera;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCarrera(Integer idCarrera) {
+        this.idCarrera = idCarrera;
     }
 
     public String getNombreCarrera() {
@@ -92,24 +83,6 @@ public class Carrera implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @XmlTransient
-    public List<Ciclo> getCicloList() {
-        return cicloList;
-    }
-
-    public void setCicloList(List<Ciclo> cicloList) {
-        this.cicloList = cicloList;
-    }
-
-    @XmlTransient
-    public List<Evaluacion> getEvaluacionList() {
-        return evaluacionList;
-    }
-
-    public void setEvaluacionList(List<Evaluacion> evaluacionList) {
-        this.evaluacionList = evaluacionList;
-    }
-
     public PeriodoAcademico getIdPeriodoAcademico() {
         return idPeriodoAcademico;
     }
@@ -121,7 +94,7 @@ public class Carrera implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idCarrera != null ? idCarrera.hashCode() : 0);
         return hash;
     }
 
@@ -132,7 +105,7 @@ public class Carrera implements Serializable {
             return false;
         }
         Carrera other = (Carrera) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idCarrera == null && other.idCarrera != null) || (this.idCarrera != null && !this.idCarrera.equals(other.idCarrera))) {
             return false;
         }
         return true;
@@ -140,7 +113,7 @@ public class Carrera implements Serializable {
 
     @Override
     public String toString() {
-        return "com.example.demo.model.Carrera[ id=" + id + " ]";
+        return "com.example.demo.model.Carrera[ idCarrera=" + idCarrera + " ]";
     }
     
 }
