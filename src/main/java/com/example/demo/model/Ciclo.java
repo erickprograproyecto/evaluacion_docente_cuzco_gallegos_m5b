@@ -49,7 +49,7 @@ public class Ciclo implements Serializable {
     @Size(max = 45)
     @Column(name = "observaciones")
     private String observaciones;
-    @JoinColumn(name = "id_carrera", referencedColumnName = "id")
+    @JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")
     @ManyToOne
     private Carrera idCarrera;
     @OneToMany(mappedBy = "idCiclo")

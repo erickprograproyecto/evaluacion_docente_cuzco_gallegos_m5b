@@ -5,7 +5,6 @@
  */
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -48,10 +47,8 @@ public class Formulario implements Serializable {
     @Size(max = 45)
     @Column(name = "observacion")
     private String observacion;
-    @JsonIgnore
     @OneToMany(mappedBy = "idFormulario")
     private List<Evaluacion> evaluacionList;
-    @JsonIgnore
     @OneToMany(mappedBy = "idFormulario")
     private List<FormularioTipoformulario> formularioTipoformularioList;
 

@@ -52,7 +52,7 @@ public class Evaluacion implements Serializable {
     @Size(max = 255)
     @Column(name = "observacion")
     private String observacion;
-    @JoinColumn(name = "id_carrera", referencedColumnName = "id")
+    @JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")
     @ManyToOne
     private Carrera idCarrera;
     @JoinColumn(name = "id_ciclo", referencedColumnName = "id_ciclo")

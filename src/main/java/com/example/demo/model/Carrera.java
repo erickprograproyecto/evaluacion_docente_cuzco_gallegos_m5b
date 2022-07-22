@@ -7,6 +7,7 @@ package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,9 +18,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -47,8 +50,12 @@ public class Carrera implements Serializable {
     @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
+    @OneToMany(mappedBy = "idCarrera")
+    private List<Ciclo> cicloList;
+    @OneToMany(mappedBy = "idCarrera")
+    private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "id_periodo_academico", referencedColumnName = "id_periodo_academico")
-    @JsonIgnore
+@JsonIgnore
     @ManyToOne
     private PeriodoAcademico idPeriodoAcademico;
 
@@ -81,6 +88,24 @@ public class Carrera implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @XmlTransient
+    public List<Ciclo> getCicloList() {
+        return cicloList;
+    }
+
+    public void setCicloList(List<Ciclo> cicloList) {
+        this.cicloList = cicloList;
+    }
+
+    @XmlTransient
+    public List<Evaluacion> getEvaluacionList() {
+        return evaluacionList;
+    }
+
+    public void setEvaluacionList(List<Evaluacion> evaluacionList) {
+        this.evaluacionList = evaluacionList;
     }
 
     public PeriodoAcademico getIdPeriodoAcademico() {

@@ -5,7 +5,6 @@
  */
 package com.example.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -40,23 +39,21 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "PeriodoAcademico.findByFechaFin", query = "SELECT p FROM PeriodoAcademico p WHERE p.fechaFin = :fechaFin")})
 public class PeriodoAcademico implements Serializable {
 
-    @Size(max = 45)
-    @Column(name = "periodo")
-    private String periodo;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_periodo_academico")
     private Integer idPeriodoAcademico;
+    @Size(max = 45)
+    @Column(name = "periodo")
+    private String periodo;
     @Column(name = "fecha_inicio")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    @JsonIgnore
     @OneToMany(mappedBy = "idPeriodoAcademico")
     private List<Carrera> carreraList;
 
@@ -75,6 +72,13 @@ public class PeriodoAcademico implements Serializable {
         this.idPeriodoAcademico = idPeriodoAcademico;
     }
 
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
 
     public Date getFechaInicio() {
         return fechaInicio;
@@ -124,14 +128,6 @@ public class PeriodoAcademico implements Serializable {
     @Override
     public String toString() {
         return "com.example.demo.model.PeriodoAcademico[ idPeriodoAcademico=" + idPeriodoAcademico + " ]";
-    }
-
-    public String getPeriodo() {
-        return periodo;
-    }
-
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
     }
     
 }
