@@ -5,6 +5,7 @@
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -32,11 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "rol")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
-    , @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol")
-    , @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol")
-    , @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion")
-    , @NamedQuery(name = "Rol.findByFechaHoraRegistro", query = "SELECT r FROM Rol r WHERE r.fechaHoraRegistro = :fechaHoraRegistro")})
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r"),
+    @NamedQuery(name = "Rol.findByIdRol", query = "SELECT r FROM Rol r WHERE r.idRol = :idRol"),
+    @NamedQuery(name = "Rol.findByRol", query = "SELECT r FROM Rol r WHERE r.rol = :rol"),
+    @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT r FROM Rol r WHERE r.descripcion = :descripcion"),
+    @NamedQuery(name = "Rol.findByFechaHoraRegistro", query = "SELECT r FROM Rol r WHERE r.fechaHoraRegistro = :fechaHoraRegistro")})
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +55,7 @@ public class Rol implements Serializable {
     @Column(name = "fecha_hora_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaHoraRegistro;
+    @JsonIgnore
     @OneToMany(mappedBy = "idRol")
     private List<Usuario> usuarioList;
 
@@ -129,5 +131,5 @@ public class Rol implements Serializable {
     public String toString() {
         return "com.example.demo.model.Rol[ idRol=" + idRol + " ]";
     }
-    
+
 }

@@ -32,10 +32,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "carrera")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Carrera.findAll", query = "SELECT c FROM Carrera c")
-    , @NamedQuery(name = "Carrera.findByIdCarrera", query = "SELECT c FROM Carrera c WHERE c.idCarrera = :idCarrera")
-    , @NamedQuery(name = "Carrera.findByNombreCarrera", query = "SELECT c FROM Carrera c WHERE c.nombreCarrera = :nombreCarrera")
-    , @NamedQuery(name = "Carrera.findByDescripcion", query = "SELECT c FROM Carrera c WHERE c.descripcion = :descripcion")})
+    @NamedQuery(name = "Carrera.findAll", query = "SELECT c FROM Carrera c"),
+    @NamedQuery(name = "Carrera.findByIdCarrera", query = "SELECT c FROM Carrera c WHERE c.idCarrera = :idCarrera"),
+    @NamedQuery(name = "Carrera.findByNombreCarrera", query = "SELECT c FROM Carrera c WHERE c.nombreCarrera = :nombreCarrera"),
+    @NamedQuery(name = "Carrera.findByDescripcion", query = "SELECT c FROM Carrera c WHERE c.descripcion = :descripcion")})
 public class Carrera implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -50,12 +50,14 @@ public class Carrera implements Serializable {
     @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
+    @JsonIgnore
     @OneToMany(mappedBy = "idCarrera")
     private List<Ciclo> cicloList;
+    @JsonIgnore
     @OneToMany(mappedBy = "idCarrera")
     private List<Evaluacion> evaluacionList;
     @JoinColumn(name = "id_periodo_academico", referencedColumnName = "id_periodo_academico")
-@JsonIgnore
+    @JsonIgnore
     @ManyToOne
     private PeriodoAcademico idPeriodoAcademico;
 
@@ -140,5 +142,5 @@ public class Carrera implements Serializable {
     public String toString() {
         return "com.example.demo.model.Carrera[ idCarrera=" + idCarrera + " ]";
     }
-    
+
 }
